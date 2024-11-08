@@ -7,4 +7,6 @@ const ROLES_LIST = require('../config/userRoles')
 router.route('/')
 .get(verifyRoles(ROLES_LIST.User,ROLES_LIST.Admin),employeeController.getAllEmployees)
 
+
+
  module.exports = router
