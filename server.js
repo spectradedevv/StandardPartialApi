@@ -29,7 +29,8 @@ app.use('/logout',require('./routes/logoutRoute'))
 
 app.use(verifyJWT)
 
-app.use('/user',require('./routes/employeesRoute')) 
+app.use('/users',require('./routes/usersRoute')) 
+app.use('/employees',require('./routes/employeesRoute'))
 
 mongoose.connection.once('open',()=>{
 console.log("Connected to MongoDB")
