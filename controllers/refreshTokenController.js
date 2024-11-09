@@ -4,7 +4,6 @@ const User = require('../models/Users')
 const handleRefreshToken = async(req,res)=>{
 
     const cookies = req.cookies
-    console.log(cookies)
     if(!cookies?.jwt) return res.sendStatus(401)
     const refreshToken = cookies.jwt
     
@@ -18,7 +17,6 @@ const handleRefreshToken = async(req,res)=>{
         (err,decoded)=>{
         const roles = Object.values(foundUser.roles)
         if(err||foundUser.username!== decoded.username) return res.sendStatus(403)
-            console.log(`this is ${decoded.username}`)
         const accessToken = jwt.sign(
         {  
             "UserInfo":
