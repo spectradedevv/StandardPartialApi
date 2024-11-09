@@ -1,8 +1,9 @@
 const Employee = require('../models/Employee')
+const Users = require('../models/Users')
 
 const getAllEmployees = async(req,res)=>{
 
-    const employees = await Employee.find()
+    const employees = await Users.find()
     if(!employees) return res.status(204).json({'message':'No employees found'})
     res.json(employees)
 }
@@ -14,7 +15,7 @@ const createNewEmployee = async(req,res)=>{
 
    try {
 
-    const result = Employee.create({
+    const result = Users.create({
         firstname:req.body.firstname,
         lastname:req.body.lastname
     })
@@ -31,7 +32,7 @@ const updateEmployee = async(req,res)=>{
         return res.status(400).json({'message':"ID parameter is required"})
     }
 
-    const employee = await Employee.findOne({_id:req.body.findOne}).exec()
+    const employee = await Users.findOne({_id:req.body.findOne}).exec()
 
     if(!employee){
         res.status(204).json({'message':`No employee matches ID ${req.body.id}`})
@@ -47,7 +48,7 @@ const deleteEmployee = async(req,res)=>{
         return res.status(400).json({'message':"Employee ID is required"})
     }
 
-    const employee = await Employee.findOne({_id:req.body.findOne}).exec()
+    const employee = await Users.findOne({_id:req.body.findOne}).exec()
 
     if(!employee){
         res.status(204).json({'message':`No employee matches ID ${req.body.id}`})
@@ -61,7 +62,7 @@ const deleteEmployee = async(req,res)=>{
     if(!req?.params?.id){
      return res.status(400).json({'message':'Employee ID required'})
     }
-    const employee = await Employee.findOne({_id:req.params.findOne}).exec()
+    const employee = await Users.findOne({_id:req.params.findOne}).exec()
     
     if(!employee){
         res.status(204).json({'message':`No employee matches ID ${req.params.id}`})

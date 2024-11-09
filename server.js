@@ -29,7 +29,6 @@ app.use('/logout',require('./routes/logoutRoute'))
 
 app.use(verifyJWT)
 
-app.use('/users',require('./routes/usersRoute')) 
 app.use('/employees',require('./routes/employeesRoute'))
 
 mongoose.connection.once('open',()=>{
